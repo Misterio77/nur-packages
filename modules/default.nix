@@ -1,2 +1,3 @@
 {
+  argonone = ./hardware/argonone.nix;
 }
