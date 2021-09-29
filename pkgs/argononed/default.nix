@@ -2,7 +2,7 @@
 
 stdenv.mkDerivation rec {
   pname = "argononed";
-  version = "unstable-2021-07-29";
+  version = "unstable-2021-09-29";
   src = fetchFromGitLab {
     owner = "DarkElvenAngel";
     repo = pname;
