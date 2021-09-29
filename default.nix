@@ -13,5 +13,5 @@
   modules = import ./modules;
   overlays = import ./overlays;
 
-  argoned = pkgs.callPackage ./pkgs/argoned { };
+  argononed = pkgs.callPackage ./pkgs/argononed { };
 }
