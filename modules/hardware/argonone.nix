@@ -28,7 +28,4 @@ in {
     systemd.packages = [ cfg.package ];
   };
 
-  meta = {
-    maintainers = with lib.maintainers; [ misterio77 ];
-  };
 }

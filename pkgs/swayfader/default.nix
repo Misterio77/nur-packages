@@ -18,7 +18,6 @@ stdenv.mkDerivation {
   meta = with lib; {
     description = "Window fading script for swaywm";
     homepage = "https://github.com/jake-stewart/swayfader";
-    maintainers = with maintainers; [ misterio77 ];
     license = licenses.mit;
     platforms = platforms.all;
   };
