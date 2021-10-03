@@ -1,5 +1,5 @@
 { lib, stdenv, fetchFromGitHub, makeWrapper
-, pass, jq, wofi, libnotify, qutebrowser, sway, wl-clipboard, findutils, gnused
+, pass, jq, wofi, libnotify, qutebrowser, sway, wl-clipboard, findutils, gnused, coreutils
 }:
 
 with lib;
@@ -32,11 +32,13 @@ stdenv.mkDerivation {
         wl-clipboard
         findutils
         gnused
+        coreutils
       ]}"
   '';
 
   meta = {
     description = "A wofi graphical menu for pass";
+    homepage = "https://github.com/Misterio77/pass-wofi";
     license = licenses.mit;
     platforms = platforms.all;
     maintainers = with maintainers; [ misterio77 ];
