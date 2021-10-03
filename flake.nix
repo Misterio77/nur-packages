@@ -1,6 +1,10 @@
 {
   description = "My personal NUR repository";
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+  };
+
   outputs = { self, nixpkgs }:
     let
       systems = [
@@ -17,5 +21,6 @@
         import ./default.nix { pkgs = import nixpkgs { inherit system; }; });
     } // {
       overlay = import ./overlay.nix;
+      nixosModules = nixpkgs.lib.mapAttrs (name: value: import value) (import ./modules);
     };
 }
