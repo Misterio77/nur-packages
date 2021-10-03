@@ -12,10 +12,12 @@
         "armv7l-linux"
       ];
       forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f system);
-    in
-    {
-      packages = forAllSystems (system: import ./default.nix {
-        pkgs = import nixpkgs { inherit system; };
-      });
+    in {
+      packages = forAllSystems (system:
+        import ./default.nix { pkgs = import nixpkgs { inherit system; }; });
+    } // {
+      outputs = { self }: {
+        overlay = import ./overlay.nix;
+      };
     };
 }
