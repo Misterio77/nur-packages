@@ -5,6 +5,7 @@
   modules = import ./modules;
   overlays = import ./overlays;
 
+  vim-noctu = pkgs.callPackage ./pkgs/vim-noctu { };
   comma = pkgs.callPackage ./pkgs/comma { };
   minicava = pkgs.callPackage ./pkgs/minicava { };
   pass-wofi = pkgs.callPackage ./pkgs/pass-wofi { };
