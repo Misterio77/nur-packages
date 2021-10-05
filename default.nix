@@ -5,6 +5,7 @@
   modules = import ./modules;
   overlays = import ./overlays;
 
+  comma = pkgs.callPackage ./pkgs/comma { };
   minicava = pkgs.callPackage ./pkgs/minicava { };
   pass-wofi = pkgs.callPackage ./pkgs/pass-wofi { };
   swayfader = pkgs.callPackage ./pkgs/swayfader { };
