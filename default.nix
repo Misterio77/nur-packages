@@ -11,5 +11,5 @@
   pass-wofi = pkgs.callPackage ./pkgs/pass-wofi { };
   swayfader = pkgs.callPackage ./pkgs/swayfader { };
   # Need I2C support on NixOS before this is useful
-  # argononed = pkgs.callPackage ./pkgs/argononed { };
+  argononed = pkgs.callPackage ./pkgs/argononed { };
 }
