@@ -18,10 +18,27 @@ in {
   };
 
   config = mkIf cfg.enable {
+    boot.kernelModules = [ "i2c-dev" "i2c-piix4" "i2c_bcm2835" ];
     hardware.deviceTree.overlays = [
       {
         name = "argononed";
         dtboFile = "${cfg.package}/boot/overlays/argonone.dtbo";
+      }
+      {
+          name = "i2c0";
+          dtsText = ''
+    /dts-v1/;
+          /plugin/;
+          /{
+              compatible = "raspberrypi,4-model-b";
+              fragment@1 {
+                  target = <&i2c1>;
+                  __overlay__ {
+                      status = "okay";
+                  };
+              };
+          };
+          '';
       }
     ];
     systemd.services.argononed = {
