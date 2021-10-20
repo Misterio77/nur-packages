@@ -9,7 +9,6 @@ in {
     enable = mkEnableOption "the driver for Argon One Raspberry Pi case fan and power button";
     package = mkOption {
       type = types.package;
-      # TODO change to pkgs.argononed when moving to nixpkgs
       default = nur.argononed;
       defaultText = "nur.argononed";
       description = ''
@@ -25,7 +24,16 @@ in {
         dtboFile = "${cfg.package}/boot/overlays/argonone.dtbo";
       }
     ];
-    systemd.packages = [ cfg.package ];
+    systemd.services.argononed = {
+      description = "Argon One Fan and Button Daemon Service";
+      wantedBy = [ "multi-user.target" ];
+      serviceConfig = {
+        Type = "forking";
+        ExecStart = "${cfg.package}/bin/argononed";
+        PIDFile = "/run/argononed.pid";
+        Restart = "on-failure";
+      };
+    };
   };
 
 }
