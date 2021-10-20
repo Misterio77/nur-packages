@@ -21,12 +21,11 @@ in {
     # boot.kernelModules = [ "i2c-dev" "i2c-piix4" "i2c_bcm2835" ];
     hardware.i2c.enable = true;
     hardware.deviceTree.overlays = [
-      /*
       {
         name = "argononed";
         dtboFile = "${cfg.package}/boot/overlays/argonone.dtbo";
       }
-      */
+      /*
       {
           name = "i2c0";
           dtsText = ''
@@ -43,6 +42,7 @@ in {
           };
           '';
       }
+      */
     ];
     systemd.services.argononed = {
       description = "Argon One Fan and Button Daemon Service";
