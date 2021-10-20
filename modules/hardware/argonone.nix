@@ -45,6 +45,7 @@ in {
           '';
       }
     ];
+    environment.systemPackages = [ nur.argononed ];
     systemd.services.argononed = {
       description = "Argon One Fan and Button Daemon Service";
       wantedBy = [ "multi-user.target" ];
