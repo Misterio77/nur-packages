@@ -18,6 +18,8 @@ in {
   };
 
   config = mkIf cfg.enable {
+    # TODO: i don't think these are needed, but keeping them here
+    # commented out just in case
     # boot.kernelModules = [ "i2c-dev" "i2c-piix4" "i2c_bcm2835" ];
     hardware.i2c.enable = true;
     hardware.deviceTree.overlays = [
@@ -25,7 +27,7 @@ in {
         name = "argononed";
         dtboFile = "${cfg.package}/boot/overlays/argonone.dtbo";
       }
-      /*
+      # Seems to be absolutely needed for pi4
       {
           name = "i2c0";
           dtsText = ''
@@ -42,7 +44,6 @@ in {
           };
           '';
       }
-      */
     ];
     systemd.services.argononed = {
       description = "Argon One Fan and Button Daemon Service";
